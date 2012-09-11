@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int main(int argc, char* arg[])
+int main(int argc, char* argv[])
 {
     char cmd[100] ;
     int i = atoi(argv[1]) ;
