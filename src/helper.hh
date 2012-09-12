@@ -122,4 +122,8 @@
 /**********************************/
 #define RV_ELEMENT 1 //put the correct click port here
 
+#define SCOPE_PROBING_MESSAGE 1
+#define SUB_SCOPE_MESSAGE 2
+
+
 #endif
