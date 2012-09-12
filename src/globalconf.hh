@@ -19,6 +19,7 @@
 #include <click/confparse.hh>
 #include <click/error.hh>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "helper.hh"
 #include "common.hh"
