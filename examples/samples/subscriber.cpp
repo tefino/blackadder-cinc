@@ -132,8 +132,12 @@ void client_process(int i)
 
     time_t begintime = time(NULL) ;
     time_t endtime = time(NULL) ;
-    while(difftime(endtime, begintime) < RUNTIME && nooffile < NUMFILE)
+    while(difftime(endtime, begintime))
     {
+    	if(nooffile >= NUMFILE && NUMFILE != 0)
+    	{
+    	     return ;
+    	}
         nooffile++ ;
         string bin_prefix_id ;
         string bin_id ;
@@ -200,10 +204,6 @@ void client_process(int i)
         fprintf(f, "%f\n", td) ;
         time_to_wait2.tv_sec = (unsigned int) random()%3 ;
         nanosleep(&time_to_wait2, NULL) ;
-    }
-    for(int i = 0 ; i < vec_file.size() ; i++)
-    {
-    	fprintf(f, "%d\n", vec_file[i]);
     }
     fclose(f) ;
     ba->disconnect();
