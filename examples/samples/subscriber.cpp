@@ -105,6 +105,8 @@ int main(int argc, char* argv[]) {
         }
         if( pid == 0 )
         {
+            (void) signal(SIGINT, sigfun) ;
+    	    signal(SIGALRM, sig_alrm) ;
             client_process(i) ;
             return 0 ;
         }
@@ -145,7 +147,8 @@ void client_process(int i)
         fflush(f) ;
 
         unsigned int chunk_num = 1 ;
-        time_t subtime = time(NULL) ;
+        struct timeval tv1, tv2 ;
+        gettimeofday(&tv1, NULL) ;
         while(chunk_num <= CHUNKSIZE)
         {
             if (sigsetjmp(env_alrm,1) != 0){
@@ -189,10 +192,11 @@ void client_process(int i)
 	            }
         	}
         	alarm(0);
-        	nanosleep(&time_to_wait1, &time_left) ;
             chunk_num++ ;
         }
-        fprintf(f, "%f\n", difftime(time(NULL), subtime)) ;
+        gettimeofday(&tv2, NULL) ;
+        float td = 1000000*(tv2.tv_sec - tv1.tv_sec)+tv2.tv_usec - tv1.tv_usec ;
+        fprintf(f, "%f\n", td) ;
         time_to_wait2.tv_sec = (unsigned int) random()%3 ;
         nanosleep(&time_to_wait2, NULL) ;
     }
