@@ -132,7 +132,7 @@ void client_process(int i)
 
     time_t begintime = time(NULL) ;
     time_t endtime = time(NULL) ;
-    while(difftime(endtime, begintime) > RUNTIME)
+    while(difftime(endtime, begintime) < RUNTIME)
     {
     	if(nooffile >= NUMFILE && NUMFILE != 0)
     	{
