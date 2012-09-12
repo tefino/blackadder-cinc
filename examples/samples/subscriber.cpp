@@ -17,6 +17,7 @@
 #include <stdlib.h>             // Needed for exit() and ato*()
 #include <math.h>               // Needed for pow()
 #include <time.h>
+#include <sys/time.h>
 
 #include "blackadder.hpp"
 #include <signal.h>
