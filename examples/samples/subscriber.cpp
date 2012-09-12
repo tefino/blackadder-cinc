@@ -132,11 +132,11 @@ void client_process(int i)
 
     time_t begintime = time(NULL) ;
     time_t endtime = time(NULL) ;
-    while(difftime(endtime, begintime))
+    while(difftime(endtime, begintime) > RUNTIME)
     {
     	if(nooffile >= NUMFILE && NUMFILE != 0)
     	{
-    	     return ;
+    	     break ;
     	}
         nooffile++ ;
         string bin_prefix_id ;
