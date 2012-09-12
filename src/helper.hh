@@ -99,6 +99,11 @@
 #define CINC_ADD_ENTRY 122
 //cinc: RV notify router add a cache list entry
 
+//k-anycast tm match pub sub under scope
+#define SCOPE_MATCH_PUB_SUB 123
+//k-anycast pub send scope probing message
+#define SCOPE_PROBING 124
+
 #define PUB 1
 #define CACHE 2
 
