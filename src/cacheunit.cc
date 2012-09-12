@@ -371,6 +371,7 @@ void CacheUnit::storecache(Vector<String>& IDs, char* data, unsigned int datalen
             cache_replace_Bill++ ;
         }
         CacheEntry* ce = cache[0] ;
+        current_size = current_size - cache[0]->total_len ;
         cache.erase(cache.begin()) ;
         delete ce ;
     }
