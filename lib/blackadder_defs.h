@@ -101,4 +101,8 @@
 #define CACHE 2
 
 #define NETLINK_BADDER 20
+
+/*****************************/
+#define SCOPE_PROBING_MESSAGE 1
+#define SUB_SCOPE_MESSAGE 2
 #endif /* BLACKADDER_DEFS_HPP */
