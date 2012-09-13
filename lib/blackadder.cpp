@@ -491,7 +491,7 @@ void Blackadder::getEvent(Event &ev) {
             ev.data = (char *) ev.buffer + sizeof (struct nlmsghdr) + sizeof (unsigned char) + sizeof (unsigned char) + ((int) id_len) * PURSUIT_ID_LEN;
             ev.data_len = bytes_read - (sizeof (struct nlmsghdr) + sizeof (unsigned char) + sizeof (unsigned char) + ((int) id_len) * PURSUIT_ID_LEN); /* XXX */
         }
-        else if(ev.type == CINC_REQ_DATA_PUB || ev.type == CINC_PUSH_TO_CACHE)
+        else if(ev.type == CINC_REQ_DATA_PUB || ev.type == CINC_PUSH_TO_CACHE || PLEASE_PUSH_DATA)
         {
             //if the type is CINC_REQ_DATA_PUB, the reply type is PUBLISH_DATA
             //if the type is CINC_PUSH_TO_CACHE, the reply type is CINC_PUSH_TO_CACHE
