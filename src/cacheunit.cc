@@ -329,6 +329,7 @@ void CacheUnit::sendbackData(CacheEntry* ce, Vector<String>& IDs, BABitvector& b
 
 void CacheUnit::storecache(Vector<String>& IDs, char* data, unsigned int datalen, unsigned int noofiid)
 {//store passed data packet
+    bool flag = false ;
     String IID = IDs[0].substring(IDs[0].length()-PURSUIT_ID_LEN, PURSUIT_ID_LEN) ;
     for(int i = 0 ; i < IDs.size() ; i++)
     {
@@ -357,11 +358,15 @@ void CacheUnit::storecache(Vector<String>& IDs, char* data, unsigned int datalen
             cache[i]->total_len += datalen ;
             cache[i]->current_noofiid++ ;
             current_size += datalen ;
-            return ;
+            flag = true ;
         }
     }
-    cache.push_back(new CacheEntry(IDs, IID, data, datalen, noofiid)) ;
-    free(data) ;
+    if(!flag)
+    {
+        cache.push_back(new CacheEntry(IDs, IID, data, datalen, noofiid)) ;
+        current_size += datalen ;
+        free(data) ;
+    }
     if(current_size > cache_size)
     {
         cache_replace++ ;
